@@ -25,7 +25,7 @@ SECRET_KEY = 'jm_r^-tsg=w!x((y1bsad^*(o_ve0s9$tf_j)8(#2_qr=t8dc)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'pantiproject.herokuapp.com']
 
 
 # Application definition
