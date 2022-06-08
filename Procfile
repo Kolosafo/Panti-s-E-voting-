@@ -1,0 +1,1 @@
+web: gunicorn panti_project.wsgi
