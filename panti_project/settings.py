@@ -75,11 +75,16 @@ WSGI_APPLICATION = 'panti_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# postgres://anlcsocovuglwx:733d08c5f74044caa039f83886e1359de35df05b22de557da225ff2a56aaf3d3@ec2-52-44-13-158.compute-1.amazonaws.com:5432/d2a3jjcmqhnnfv
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd2a3jjcmqhnnfv',
+        'HOST': 'ec2-52-44-13-158.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'anlcsocovuglwx',
+        'PASSWORD': '733d08c5f74044caa039f83886e1359de35df05b22de557da225ff2a56aaf3d3'
     }
 }
 
