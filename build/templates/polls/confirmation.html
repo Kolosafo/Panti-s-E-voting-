@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1> Confirm Vote?
+</h1>
+
+<form action="{% url 'polls:index' %}" method ="POST">
+	{% csrf_token %}
+<input type ="submit" value ="Confirm" class ="btn btn-success btn-lg btn-block mt-4" />
+<a class ="btn btn-secondary btn-sm mb-3" href ="{% url 'polls:index' %}">Back To Polls</a>
+
+
+</form>
+{% endblock %}

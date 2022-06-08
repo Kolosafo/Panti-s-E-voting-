@@ -1,0 +1,86 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="Syahrizaldev">
+      <link rel="stylesheet" href="{% static '/navbarObj/reset.min.css' %}">
+      <link rel="stylesheet" href="{% static '/navbarObj/style.min.css' %}">
+      <link rel="stylesheet" href="{% static '/navbarObj/ionicon.min.css' %}">
+
+
+      {% comment %} <link rel="stylesheet" type="text/css" href="../../static/navbarObj/reset.min.css">
+      <link rel="stylesheet" type="text/css" href="../../static/navbarObj/style.min.css">
+      <link rel="stylesheet" type="text/css" href="../../static/navbarObj/ionicon.min.css"> {% endcomment %}
+      <style>
+.navLogin {
+  width: 80px;
+  height: 36px;
+  border: 1px solid #e91e63;
+  background: #e91e63;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+      </style>
+   </head>
+
+   <body style="margin-top: 80;">
+
+      <!-- Section: Header -->
+      <header class="header"  style="height: 50px;  background-color: white; position: fixed;">
+         <div class="container"  style="height: 50px;">
+            <section class="wrapper"  style="height: 62px;">
+               <h1><a href="{% url 'polls:index' %}" style="color: rgba(50, 79, 196, 0.713);" class="brand">Panti's E-voting Project</a></h1>
+               <button style="color: black;" type="button" class="opened-menu">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </button>
+               <div class="overlay"></div>
+               <nav class="navbar">
+                  <button type="button" class="closed-menu">
+                     <img src="../../static/navbarObj/closed.svg" class="closed-icon" alt="closed">
+                  </button>
+                  <ul class="menu">
+                     <li class="menu-item"><a href="/" style="color: black;">Home</a></li>
+                     <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu" style="color: black;">Pages<i class="expand"></i></a>
+                        <ul class="sub-menu" style="color: black;">
+                           <li class="menu-item" style="color: black;"><a style="color: black;" href="/" >Panti</a></li>
+                           <li class="menu-item"><a href="{% url 'polls:index' %}" style="color: black;" >Vote</a></li>
+                           <li class="menu-item"><a href="{% url 'polls:about'%}" style="color: black;" >About This Project</a></li>
+                           <li class="menu-item"><a href="{% url 'polls:logout'%}"  style="color: black;">Logout</a></li>
+                        </ul>
+                     </li>
+                     <li class="menu-item"><a href="{% url 'polls:index' %}" style="color: black;">Vote</a></li>
+                     <li class="menu-item"><a href="{% url 'polls:about' %}" style="color: black;">About</a></li>
+                     <li class="menu-item"><a href="#"></a></li>
+
+                     <li class="menu-item"><a href="#"></a></li>
+                     {% if user.is_authenticated %}
+                        {{user.username}}
+                     {% else %}
+                     <li class="menu-item"><a href="{% url 'polls:index' %}"><input type="submit" value="Log in" class="navLogin" id="navLogin"></a></li>
+
+                     {% endif %}
+
+                  </ul>
+               </nav>
+            </section>
+         </div>
+      </header>
+
+
+
+      <script src="../../static/navbarObj/script.js" defer></script>
+   </body>
+
+</html>
+

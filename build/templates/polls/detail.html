@@ -1,0 +1,179 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+	  body{
+  		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: nowrap;
+  min-height:100vh;
+  background: #212534
+}
+
+.row-needed{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.main{
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		
+	
+		}
+		.card{
+			position: relative;
+      display:flex;
+			height:330px;
+			width: 220px;
+			background-color:  #191c29;
+			border-radius: 15px;
+      justify-content: center;
+		align-items: center;
+		flex-wrap: nowrap;
+      flex-direction:column;
+      text-align:center;
+      border:2px solid  rgb(88 199 250);
+      overflow:hidden;
+      transition:.6s;
+        box-shadow:0px 0px  100px rgba(88,199,250,.15);
+      
+ 
+     }
+.text1{
+  position:relative;
+  font-size:33px;
+  font-family:roboto;
+  color: rgb(88 199 250);
+  font-weight:100;
+  letter-spacing:1px;
+  transition:.7s;
+  transform:translateY(110px);
+  
+  
+    
+  
+}
+
+.text2{color:#dbf9ff;
+  font-family:roboto;
+  font-weight:100;
+  font-size:14px;
+  width:170px;
+  line-height:25px;
+transform:translateY(200px);
+  transition:.7s;
+  opacity:0
+  
+}
+.hover{}
+h2{
+  font-size:38px;
+    font-family:roboto;
+  color:rgb(88 199 250);
+  font-weight:400;
+  margin:0;
+  padding:0;
+  transform:translateY(200px);
+    opacity:1;
+  transition:.6s;
+  opacity:0
+  
+}
+button{
+  transform:translatey(200px);
+  transition:.88s;
+  opacity:0;
+  width:110px;
+    height:38px;
+  border-radius:40px;
+  font-size:12px;
+  font-family:roboto;
+  text-transform:uppercase;
+  font-weight:300;
+  letter-spacing:1px;
+  color:white;
+  background-color: #0beef9;
+background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%);
+  border:none;
+  cursor:pointer
+}
+
+
+button:active{
+  color:#0beef9
+}
+/*@keyframes scale
+{
+  0%{transform:scale(100%) translateY(100px)}
+   50%{transform:scale(103%) translateY(100px)}
+   100%{transform:scale(100%) translateY(100px)}
+}
+*/
+  </style>
+  <body>
+    <a class="btn btn-secondary btn-sm mb-3" href="{% url 'polls:index' %}" style="color: gray;"
+      >Back To Polls</a
+    >
+    <h1 class="text-center mb-3" style="color: white;">{{ question.question_text }}</h1>
+
+    {% if error_message %}
+    <p class="alert alert-danger">
+      <strong>{{ error_message }}</strong>
+    </p>
+
+    {% endif %}
+
+    <form action="{% url 'polls:confirmation' question.id %}" method="POST">
+		<div class="row-needed">
+      {% csrf_token %} {% for choice in question.choice_set.all %}
+
+      <div class="main">
+        <div class="card">
+          <div class="text1">
+            <label for="choice{{ forloop.counter }}"
+              >{{ choice.choice_text }}</label
+            >
+            <br />
+            <input
+              type="radio"
+              name="choice"
+              class="form-check-input"
+              id="choice{{ forloop.counter }}"
+              value="{{ choice.id }}"
+            />
+          </div>
+          <div class="hover">
+            <h2>Card One</h2>
+            <div class="text2-{{forloop.counter}}">
+              <p style="color: #191c29;">  believe that a woman can lead this school to its greatest heights </p>
+            </div>
+            <button>Read More</button>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+	</div>
+	<center>     <input
+        type="submit"
+        value="Submit Vote"
+        class="btn btn-success btn-lg btn-block mt-4"
+		style="background-color: #47e61c;"
+      /> </center>
+  
+
+    </form>
+  </body>
+</html>
+{% endblock %}
